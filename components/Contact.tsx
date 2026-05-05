@@ -1,6 +1,7 @@
 "use client";
 
 import { Mail, Send, MapPin } from "lucide-react";
+import { useState } from "react";
 
 function GithubIcon({ size = 16 }: { size?: number }) {
   return (
@@ -48,13 +49,38 @@ const socials = [
 ];
 
 export default function Contact() {
+  const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">(
+    "idle",
+  );
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("sending");
+
+    const res = await fetch("https://formspree.io/f/xnjwdlrq", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    if (res.ok) {
+    setStatus("done");
+    setName("");      
+    setEmail("");
+    setMessage("");
+  } else {
+    setStatus("error");
+  }
+  }
   return (
     <section
       id="contact"
       className="lg:ml-[240px] py-28 bg-white border-t border-black/[0.06]"
     >
       <div className="max-w-5xl mx-auto px-8 lg:px-16">
-
         {/* Section label */}
         <div className="flex items-center gap-4 mb-16">
           <span className="font-mono-custom text-[11px] text-black/30 uppercase tracking-[0.25em]">
@@ -64,20 +90,20 @@ export default function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-20 items-start">
-
           {/* Left */}
           <div>
             <h2 className="font-display font-semibold text-[clamp(1.9rem,3.5vw,2.8rem)] text-black leading-[1.15] mb-6">
               Let`s build{" "}
               <span className="italic text-black/30">something</span>
-              <br />great together.
+              <br />
+              great together.
             </h2>
             <p className="text-black/45 text-[1.05rem] leading-relaxed mb-10">
               Whether you have a project in mind, want to collaborate, or just
               want to say hi — my inbox is always open.
             </p>
 
-          <a
+            <a
               href="mailto:mehadi.hasan.engr@gmail.com"
               className="inline-flex items-center gap-3 bg-black text-white px-8 py-4 rounded-full font-medium text-base hover:bg-black/80 transition-colors duration-300 group mb-8"
             >
@@ -105,13 +131,19 @@ export default function Contact() {
                   className="group flex items-center gap-4 p-4 rounded-2xl border border-black/[0.08] hover:border-black hover:bg-black hover:shadow-none transition-all duration-200"
                 >
                   <div className="w-9 h-9 rounded-xl bg-black/[0.04] group-hover:bg-white/10 flex items-center justify-center transition-colors flex-shrink-0">
-                    <Icon size={15}/>
+                    <Icon size={15} />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-black group-hover:text-white transition-colors">{label}</p>
-                    <p className="text-[12px] text-black/35 group-hover:text-white/50 transition-colors font-mono-custom">{handle}</p>
+                    <p className="text-sm font-semibold text-black group-hover:text-white transition-colors">
+                      {label}
+                    </p>
+                    <p className="text-[12px] text-black/35 group-hover:text-white/50 transition-colors font-mono-custom">
+                      {handle}
+                    </p>
                   </div>
-                  <span className="ml-auto text-black/20 group-hover:text-white/50 text-lg transition-colors">→</span>
+                  <span className="ml-auto text-black/20 group-hover:text-white/50 text-lg transition-colors">
+                    →
+                  </span>
                 </a>
               ))}
             </div>
@@ -122,7 +154,9 @@ export default function Contact() {
             <h3 className="font-display font-semibold text-xl text-black mb-1">
               Send a message
             </h3>
-            <p className="text-black/35 text-sm mb-7">I typically reply within 24 hours.</p>
+            <p className="text-black/35 text-sm mb-7">
+              I typically reply within 24 hours.
+            </p>
 
             <div className="space-y-4">
               <div>
@@ -131,7 +165,9 @@ export default function Contact() {
                 </label>
                 <input
                   type="text"
-                  placeholder="John Doe"
+                  placeholder="Enter your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="w-full bg-black/[0.02] border border-black/[0.08] rounded-xl px-4 py-3 text-black text-sm placeholder:text-black/20 focus:outline-none focus:border-black transition-colors"
                 />
               </div>
@@ -141,7 +177,9 @@ export default function Contact() {
                 </label>
                 <input
                   type="email"
-                  placeholder="john@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
                   className="w-full bg-black/[0.02] border border-black/[0.08] rounded-xl px-4 py-3 text-black text-sm placeholder:text-black/20 focus:outline-none focus:border-black transition-colors"
                 />
               </div>
@@ -151,17 +189,32 @@ export default function Contact() {
                 </label>
                 <textarea
                   rows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tell me about your project..."
                   className="w-full bg-black/[0.02] border border-black/[0.08] rounded-xl px-4 py-3 text-black text-sm placeholder:text-black/20 focus:outline-none focus:border-black transition-colors resize-none"
                 />
               </div>
-              <button className="w-full bg-black text-white py-3.5 rounded-xl font-semibold hover:bg-black/80 transition-colors duration-200 flex items-center justify-center gap-2 text-sm">
-                Send Message
+              <button
+                onClick={handleSubmit}
+                disabled={status === "sending"}
+                className="w-full bg-black text-white py-3.5 rounded-xl font-semibold hover:bg-black/80 transition-colors duration-200 flex items-center justify-center gap-2 text-sm"
+              >
+                {status === "sending" ? "Sending..." : "Send Message"}
                 <Send size={14} />
               </button>
+              {status === "done" && (
+                <p className="text-green-600 text-sm text-center">
+                  ✅ Message sent! I`ll reply soon.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-red-500 text-sm text-center">
+                  ❌ Something went wrong. Try again.
+                </p>
+              )}
             </div>
           </div>
-
         </div>
       </div>
     </section>

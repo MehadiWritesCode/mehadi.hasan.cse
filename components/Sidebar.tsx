@@ -145,8 +145,14 @@ export default function Sidebar() {
 <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/[0.07]">
   <div className="flex items-center justify-between px-5 py-3.5">
     <Link href="#home" className="flex items-center gap-2.5 min-w-0">
-      <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center flex-shrink-0">
-        <span className="text-white text-xs font-bold">MH</span>
+      <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 border border-black/10">
+        <Image
+        src="/my_image.jpg"
+        alt="Mehadi Hasan"
+        width={36}
+        height={36}
+        className="object-cover object-top w-full h-full"
+      />
       </div>
       <span className="text-[13px] font-semibold text-black truncate">Mehadi Hasan</span>
     </Link>
