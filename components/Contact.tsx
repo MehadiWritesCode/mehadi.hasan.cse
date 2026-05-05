@@ -67,13 +67,13 @@ export default function Contact() {
     });
 
     if (res.ok) {
-    setStatus("done");
-    setName("");
-    setEmail("");
-    setMessage("");
-  } else {
-    setStatus("error");
-  }
+      setStatus("done");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } else {
+      setStatus("error");
+    }
   }
   return (
     <section
@@ -204,15 +204,15 @@ export default function Contact() {
                 <Send size={14} />
               </button>
               {status === "done" && (
-  <p className="text-black text-sm text-center border border-black/10 rounded-xl py-3">
-    ✓ Message sent! I`ll reply soon.
-  </p>
-)}
-{status === "error" && (
-  <p className="text-black text-sm text-center border border-black/10 rounded-xl py-3">
-    ✗ Something went wrong. Try again.
-  </p>
-)}
+                <p className="text-black text-sm text-center border border-black/10 rounded-xl py-3">
+                  ✓ Message sent! I`ll reply soon.
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-black text-sm text-center border border-black/10 rounded-xl py-3">
+                  ✗ Something went wrong. Try again.
+                </p>
+              )}
             </div>
           </div>
         </div>

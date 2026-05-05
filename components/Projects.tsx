@@ -161,8 +161,21 @@ const projects = [
     featured: true,
     inProgress: true,
   },
+
   {
     num: "06",
+    title: "World Explore",
+    description:
+      "Give primary details of every country in the world",
+    tags: ["HTML", "css", "js", "API"],
+    github: "https://github.com/MehadiWritesCode/world-explore",
+    live: "https://world-explore6838.netlify.app",
+    featured: false,
+    inProgress: false,
+  },
+
+  {
+    num: "07",
     title: "GlobeReport",
     description:
       "A BBC-inspired modern news platform built with PHP and Supabase database integration.",
@@ -173,7 +186,7 @@ const projects = [
     inProgress: false,
   },
   {
-    num: "07",
+    num: "08",
     title: "Portfolio — Nibir Hasan",
     description:
       "Personal portfolio website designed and developed for a friend.",
@@ -184,7 +197,7 @@ const projects = [
     inProgress: false,
   },
   {
-    num: "08",
+    num: "09",
     title: "Inventory Management System",
     description:
       "1st semester console-based inventory management system built with C.",
@@ -239,12 +252,12 @@ export default function Projects() {
                 </span>
                 <div className="flex items-center gap-2">
                   {p.inProgress && (
-                    <span className="text-[11px] font-medium text-amber-500 border border-amber-200 bg-amber-50 px-2.5 py-0.5 rounded-full">
+                    <span className="text-[11px] font-medium text-amber-500 border  bg-amber-50 px-2.5 py-0.5 rounded-full">
                       In Progress
                     </span>
                   )}
                   {p.featured && !p.inProgress && (
-                    <span className="text-[11px] font-medium text-black/40 border border-black/10 px-2.5 py-0.5 rounded-full">
+                    <span className="text-[11px] font-medium text-white border border-black/10 px-2.5 py-0.5 rounded-full bg-black">
                       Featured
                     </span>
                   )}
