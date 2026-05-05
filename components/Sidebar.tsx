@@ -39,8 +39,8 @@ function XIcon({ size = 18 }: { size?: number }) {
 
 const socials = [
   { icon: GithubIcon,   href: "https://github.com/MehadiWritesCode",      label: "GitHub" },
-  { icon: LinkedinIcon, href: "https://linkedin.com/in/MehadiWritesCode", label: "LinkedIn" },
-  { icon: XIcon,        href: "https://x.com/MehadiWritesCode",           label: "X / Twitter" },
+  { icon: LinkedinIcon, href: "https://www.linkedin.com/in/mehadi-hasan-4476b1392/", label: "LinkedIn" },
+  { icon: XIcon,        href: "https://x.com/Mehadi_Hasan68",           label: "X / Twitter" },
 ];
 
 export default function Sidebar() {

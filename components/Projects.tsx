@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 function GithubIcon({ size = 16 }: { size?: number }) {
@@ -10,53 +11,203 @@ function GithubIcon({ size = 16 }: { size?: number }) {
   );
 }
 
+function getTagColor(tag: string) {
+  const t = tag.toLowerCase();
+  if (
+    ["python", "c", "javascript", "js", "typescript", "java"].some((k) =>
+      t.includes(k),
+    )
+  )
+    return "bg-yellow-50 border-yellow-200/80 text-yellow-700";
+  if (
+    ["react", "nextjs", "next.js", "html", "css", "tailwind", "framer"].some(
+      (k) => t.includes(k),
+    )
+  )
+    return "bg-blue-50 border-blue-200/80 text-blue-600";
+  if (
+    ["supabase", "postgresql", "mongodb", "mysql", "redis"].some((k) =>
+      t.includes(k),
+    )
+  )
+    return "bg-green-50 border-green-200/80 text-green-700";
+  if (
+    ["vercel", "netlify", "render", "cloudflare", "docker"].some((k) =>
+      t.includes(k),
+    )
+  )
+    return "bg-purple-50 border-purple-200/80 text-purple-600";
+  if (
+    ["oauth", "jwt", "auth", "bcrypt", "security", "cyber"].some((k) =>
+      t.includes(k),
+    )
+  )
+    return "bg-red-50 border-red-200/80 text-red-600";
+  if (
+    ["api", "rest", "graphql", "expressjs", "node"].some((k) => t.includes(k))
+  )
+    return "bg-orange-50 border-orange-200/80 text-orange-600";
+  if (
+    ["cloudinary", "resend", "stripe", "gemini", "openai"].some((k) =>
+      t.includes(k),
+    )
+  )
+    return "bg-pink-50 border-pink-200/80 text-pink-600";
+  return "bg-slate-50 border-slate-200/80 text-slate-500";
+}
+
 const projects = [
   {
     num: "01",
-    title: "SaaS Dashboard",
-    description: "Full-stack analytics dashboard with real-time data, user auth, and Stripe billing. Built with Next.js, Prisma, and PostgreSQL.",
-    tags: ["Next.js", "TypeScript", "Prisma", "Stripe"],
-    github: "https://github.com",
-    live: "https://example.com",
+    title: "NetSpy",
+    description:
+      "Advance Packet capturing and security analysis and traffic monitoring.",
+    tags: [
+      "Python",
+      "Scapy",
+      "Customtkinter",
+      "packet-sniffer",
+      "traffic-monitor",
+      "cyber-security",
+      "networking",
+    ],
+    github: "https://github.com/MehadiWritesCode/NetSpy",
+    live: "",
     featured: true,
+    inProgress: false,
   },
   {
     num: "02",
-    title: "Design System",
-    description: "Reusable component library with 50+ components, full accessibility support, and comprehensive Storybook documentation.",
-    tags: ["React", "Tailwind", "Storybook"],
-    github: "https://github.com",
-    live: "https://example.com",
+    title: "NIXBIRD",
+    description: "Premium Clothing brand.",
+    tags: [
+      "Nextjs",
+      "Tailwind",
+      "typescript",
+      "supabase",
+      "supabase-Oauth",
+      "cloudinary",
+      "resend",
+      "trunstile",
+      "cloudflare",
+      "google-Oauth",
+      "postgresql",
+      "vercel",
+    ],
+    github: "https://github.com/MehadiWritesCode/nixbird",
+    live: "https://nixbird.com",
     featured: true,
+    inProgress: true,
   },
   {
     num: "03",
-    title: "E-Commerce App",
-    description: "Modern storefront with cart, filters, and smooth page transitions. Integrated with a headless CMS for content management.",
-    tags: ["Next.js", "Framer Motion", "Sanity"],
-    github: "https://github.com",
-    live: "https://example.com",
-    featured: false,
+    title: "Robot PathFinder",
+    description:
+      "Multi-floor A* pathfinding visualizer with elevators & stairs — built with Python & Pygame.",
+    tags: ["python", "pygame", "A*-algorithm", "heuristic", "bfs"],
+    github: "https://github.com/MehadiWritesCode/RobotPathFinder",
+    live: "",
+    featured: true,
+    inProgress: false,
   },
   {
     num: "04",
-    title: "Real-time Chat",
-    description: "Chat application with rooms, typing indicators, and file sharing. Built on Socket.io with a Node.js backend.",
-    tags: ["Node.js", "Socket.io", "MongoDB"],
-    github: "https://github.com",
-    live: "https://example.com",
+    title: "XONEXA",
+    description:
+      "Full stack ecommerce website with authentication, product management, and analytics dashboard.",
+    tags: [
+      "React",
+      "postgresql",
+      "MongoDB",
+      "Javascript",
+      "supabase-Oauth",
+      "supabase",
+      "vercel",
+      "google-Oauth",
+      "render",
+      "rest-API",
+      "expressjs",
+      "recharts",
+      "bycrypt",
+      "jwt",
+      "cloudinary",
+      "joi-validation",
+    ],
+    github: "https://github.com/MehadiWritesCode/xonexa-server",
+    live: "https://xonexa-client.vercel.app",
+    featured: true,
+    inProgress: false,
+  },
+  {
+    num: "05",
+    title: "CGCP",
+    description:
+      "A smart digital platform connecting citizens with government services in Bangladesh, enabling issue reporting, transparency, AI-powered assistance, and real-time public service insights.",
+    tags: [
+      "Nextjs",
+      "postgresql",
+      "Gemini API",
+      "typescript",
+      "supabase-Oauth",
+      "supabase",
+      "Leaflet.js",
+      "OpenStreetMap",
+      "image-verification",
+      "chatbot",
+    ],
+    github:
+      "https://github.com/MehadiWritesCode/Citizen-Govt-Connection-Platform",
+    live: "",
+    featured: true,
+    inProgress: true,
+  },
+  {
+    num: "06",
+    title: "GlobeReport",
+    description:
+      "A BBC-inspired modern news platform built with PHP and Supabase database integration.",
+    tags: ["HTML", "css", "js", "PHP", "supabase", "REST API"],
+    github: "https://github.com/MehadiWritesCode/GlobeReport-servert",
+    live: "",
     featured: false,
+    inProgress: false,
+  },
+  {
+    num: "07",
+    title: "Portfolio — Nibir Hasan",
+    description:
+      "Personal portfolio website designed and developed for a friend.",
+    tags: ["HTML", "css", "js", "netlify"],
+    github: "https://github.com/MehadiWritesCode/nibir-hasan-portfolio",
+    live: "https://nibir-hasan.netlify.app",
+    featured: false,
+    inProgress: false,
+  },
+  {
+    num: "08",
+    title: "Inventory Management System",
+    description:
+      "1st semester console-based inventory management system built with C.",
+    tags: ["C", "Algorithm", "data-structures", "console-application"],
+    github: "https://github.com/MehadiWritesCode/Inventory-Management-System",
+    live: "",
+    featured: false,
+    inProgress: false,
   },
 ];
 
 export default function Projects() {
   return (
-    <section id="projects" className="lg:ml-[240px] py-28 bg-white border-t border-black/[0.06]">
+    <section
+      id="projects"
+      className="lg:ml-[240px] py-28 bg-white border-t border-black/[0.06]"
+    >
       <div className="max-w-5xl mx-auto px-8 lg:px-16">
-
         {/* Label */}
         <div className="flex items-center gap-4 mb-16">
-          <span className="font-mono-custom text-[11px] text-black/30 uppercase tracking-[0.25em]">04 — Projects</span>
+          <span className="font-mono-custom text-[11px] text-black/30 uppercase tracking-[0.25em]">
+            04 — Projects
+          </span>
           <div className="flex-1 h-px bg-black/[0.07]" />
         </div>
 
@@ -64,15 +215,15 @@ export default function Projects() {
           <h2 className="font-display font-semibold text-[clamp(1.9rem,3.5vw,2.8rem)] text-black leading-[1.15]">
             Things I`ve built
           </h2>
-          <a
-            href="https://github.com"
+          <Link
+            href="https://github.com/MehadiWritesCode"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline-flex items-center gap-2 text-[13px] text-black/35 hover:text-black transition-colors font-medium"
           >
             <GithubIcon size={14} />
             All on GitHub
-          </a>
+          </Link>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
@@ -87,40 +238,49 @@ export default function Projects() {
                   {p.num}
                 </span>
                 <div className="flex items-center gap-2">
-                  {p.featured && (
+                  {p.inProgress && (
+                    <span className="text-[11px] font-medium text-amber-500 border border-amber-200 bg-amber-50 px-2.5 py-0.5 rounded-full">
+                      In Progress
+                    </span>
+                  )}
+                  {p.featured && !p.inProgress && (
                     <span className="text-[11px] font-medium text-black/40 border border-black/10 px-2.5 py-0.5 rounded-full">
                       Featured
                     </span>
                   )}
-                  <a
+                  <Link
                     href={p.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-7 h-7 flex items-center justify-center rounded-lg border border-black/08 text-black/30 hover:text-black hover:border-black/20 transition-all"
                   >
                     <GithubIcon size={13} />
-                  </a>
-                  <a
-                    href={p.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-black/08 text-black/30 hover:text-black hover:border-black/20 transition-all"
-                  >
-                    <ArrowUpRight size={13} />
-                  </a>
+                  </Link>
+                  {p.live && (
+                    <Link
+                      href={p.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-7 h-7 flex items-center justify-center rounded-lg border border-black/08 text-black/30 hover:text-black hover:border-black/20 transition-all"
+                    >
+                      <ArrowUpRight size={13} />
+                    </Link>
+                  )}
                 </div>
               </div>
 
-              <h3 className="font-display font-semibold text-xl text-black mb-3 group-hover:text-black transition-colors">
+              <h3 className="font-display font-semibold text-xl text-black mb-3">
                 {p.title}
               </h3>
-              <p className="text-black/40 text-[13px] leading-relaxed mb-6">{p.description}</p>
+              <p className="text-black/40 text-[13px] leading-relaxed mb-6">
+                {p.description}
+              </p>
 
               <div className="flex flex-wrap gap-1.5">
                 {p.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono-custom text-[11px] uppercase tracking-wider px-3 py-1 bg-black/[0.03] border border-black/[0.06] text-black/35 rounded-full"
+                    className={` text-black text-[11px] uppercase tracking-wider px-3 py-1 border rounded-full ${getTagColor(tag)}`}
                   >
                     {tag}
                   </span>
@@ -132,7 +292,6 @@ export default function Projects() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

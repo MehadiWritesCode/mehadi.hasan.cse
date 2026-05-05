@@ -37,13 +37,13 @@ const socials = [
     icon: LinkedinIcon,
     label: "LinkedIn",
     handle: "Mehadi Hasan",
-    href: "https://linkedin.com/in/MehadiWritesCode",
+    href: "https://www.linkedin.com/in/mehadi-hasan-4476b1392/",
   },
   {
     icon: XIcon,
     label: "Twitter / X",
     handle: "@MehadiWritesCode",
-    href: "https://x.com/MehadiWritesCode",
+    href: "https://x.com/Mehadi_Hasan68",
   },
 ];
 

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://mehadihasan.netlify.app'),
+  metadataBase: new URL('https://mehadihassan.netlify.app'),
   title: {
     default: 'Mehadi Hasan | Full Stack Developer',
     template: '%s | Mehadi Hasan',
@@ -18,16 +18,16 @@ export const metadata: Metadata = {
     'Bangladesh Developer',
     'Web Developer Bangladesh',
   ],
-  authors: [{ name: 'Mehadi Hasan', url: 'https://mehadihasan.netlify.app' }],
+  authors: [{ name: 'Mehadi Hasan', url: 'https://mehadihassan.netlify.app' }],
   creator: 'Mehadi Hasan',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mehadihasan.netlify.app',
+    url: 'https://mehadihassan.netlify.app',
     title: 'Mehadi Hasan | Full Stack Developer',
     description: 'CSE Student & Full Stack Developer from Bangladesh.',
     siteName: 'Mehadi Hasan Portfolio',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Mehadi Hasan Portfolio' }],
+    images: [{ url: '/my_image.jpg', width: 1200, height: 630, alt: 'Mehadi Hasan Portfolio' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -36,10 +36,10 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://mehadihasan.netlify.app' },
+  alternates: { canonical: 'https://mehadihassan.netlify.app' },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }){
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
