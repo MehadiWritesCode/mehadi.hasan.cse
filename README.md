@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# Mehadi Hasan — Portfolio
 
-First, run the development server:
+**My personal developer portfolio — built with Next.js 15 and Tailwind CSS.**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-mehadihasan.netlify.app-black?style=for-the-badge&logo=netlify)](https://mehadihassan.netlify.app)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)](https://typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+</div>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## About
 
-## Learn More
+This is my personal portfolio website where I showcase my projects, skills, and experience as a Full Stack Developer. Built with a focus on clean design, fast performance, and great user experience.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Responsive sidebar navigation with scroll spy
+- Typewriter role animation on hero section
+- Smooth scroll with active section highlighting
+- Contact form
+- Skill progress bars with marquee badge strip
+- Project cards with GitHub and live links
+- Mobile fullscreen menu
+- SEO optimized with OpenGraph and JSON-LD structured data
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| Icons | Lucide React |
+| Images | next/image |
+| Deployment | Netlify |
+
+---
+
+## Sections
+
+- **Hero** — Introduction with typewriter animation and profile photo
+- **About** — A bit about me and what I enjoy
+- **Skills** — My tech stack with proficiency levels
+- **Projects** — Things I have built
+- **Contact** — Ways to reach me
+
+---
+
+<div align="center">
+
+Made with ❤️ by [Mehadi Hasan](https://github.com/MehadiWritesCode) · Dhaka, Bangladesh 🇧🇩
+
+</div>
