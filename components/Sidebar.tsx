@@ -2,15 +2,25 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Home, Briefcase, User, Cpu, Mail } from "lucide-react";
+import {
+  Menu,
+  X,
+  Home,
+  Briefcase,
+  User,
+  Cpu,
+  Mail,
+  Palette,
+} from "lucide-react";
 import Image from "next/image";
 
 const links = [
-  { label: "Home",     href: "#home",     icon: Home },
-  { label: "About",    href: "#about",    icon: User },
-  { label: "Skills",   href: "#skills",   icon: Cpu },
+  { label: "Home", href: "#home", icon: Home },
+  { label: "About", href: "#about", icon: User },
+  { label: "Skills", href: "#skills", icon: Cpu },
   { label: "Projects", href: "#projects", icon: Briefcase },
-  { label: "Contact",  href: "#contact",  icon: Mail },
+  { label: "Hobbies", href: "#hobbies", icon: Palette },
+  { label: "Contact", href: "#contact", icon: Mail },
 ];
 
 function GithubIcon({ size = 18 }: { size?: number }) {
@@ -38,9 +48,17 @@ function XIcon({ size = 18 }: { size?: number }) {
 }
 
 const socials = [
-  { icon: GithubIcon,   href: "https://github.com/MehadiWritesCode",      label: "GitHub" },
-  { icon: LinkedinIcon, href: "https://www.linkedin.com/in/mehadi-hasan-4476b1392/", label: "LinkedIn" },
-  { icon: XIcon,        href: "https://x.com/Mehadi_Hasan68",           label: "X / Twitter" },
+  {
+    icon: GithubIcon,
+    href: "https://github.com/MehadiWritesCode",
+    label: "GitHub",
+  },
+  {
+    icon: LinkedinIcon,
+    href: "https://www.linkedin.com/in/mehadi-hasan-4476b1392/",
+    label: "LinkedIn",
+  },
+  { icon: XIcon, href: "https://x.com/Mehadi_Hasan68", label: "X / Twitter" },
 ];
 
 export default function Sidebar() {
@@ -54,12 +72,14 @@ export default function Sidebar() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const label = links.find((l) => l.href === `#${entry.target.id}`)?.label;
+            const label = links.find(
+              (l) => l.href === `#${entry.target.id}`,
+            )?.label;
             if (label) setActive(label);
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.4 },
     );
 
     sectionIds.forEach((id) => {
@@ -72,32 +92,37 @@ export default function Sidebar() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
     <>
       {/* ─── DESKTOP SIDE PANEL ─── */}
       <aside className="hidden lg:flex fixed left-0 top-0 h-screen w-[240px] flex-col bg-white border-r border-black/[0.07] z-50">
-
         {/* Logo */}
         <div className="px-7 pt-9 pb-7 border-b border-black/[0.07]">
-  <Link href="#home" className="flex items-center gap-3">
-    <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 border border-black/10">
-      <Image
-        src="/my_image.jpg"
-        alt="Mehadi Hasan"
-        width={36}
-        height={36}
-        className="object-cover object-top w-full h-full"
-      />
-    </div>
-    <div>
-      <p className="text-[13px] font-semibold text-black leading-none tracking-tight">Mehadi Hasan</p>
-      <p className="text-[11px] text-black/35 mt-0.5 tracking-widest uppercase">Portfolio</p>
-    </div>
-  </Link>
-</div>
+          <Link href="#home" className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 border border-black/10">
+              <Image
+                src="/my_image.jpg"
+                alt="Mehadi Hasan"
+                width={36}
+                height={36}
+                className="object-cover object-top w-full h-full"
+              />
+            </div>
+            <div>
+              <p className="text-[13px] font-semibold text-black leading-none tracking-tight">
+                Mehadi Hasan
+              </p>
+              <p className="text-[11px] text-black/35 mt-0.5 tracking-widest uppercase">
+                Portfolio
+              </p>
+            </div>
+          </Link>
+        </div>
 
         {/* Nav links */}
         <nav className="flex-1 px-3 py-5 space-y-0.5 overflow-y-auto">
@@ -109,7 +134,7 @@ export default function Sidebar() {
               className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-[13px] font-medium transition-all duration-200 ${
                 active === label
                   ? "bg-black text-white"
-                  : "text-black/40 hover:text-black hover:bg-black/[0.04]"
+                  : "text-black/80 hover:text-black hover:bg-black/[0.04]"
               }`}
             >
               <Icon size={15} className="flex-shrink-0" />
@@ -122,7 +147,9 @@ export default function Sidebar() {
         <div className="px-7 py-6 border-t border-black/[0.07] space-y-4">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-[11px] text-black/40 tracking-wider uppercase font-medium">Available</span>
+            <span className="text-[11px] text-black/40 tracking-wider uppercase font-medium">
+              Available
+            </span>
           </div>
           <div className="flex items-center gap-2.5">
             {socials.map(({ icon: Icon, href, label }) => (
@@ -142,39 +169,43 @@ export default function Sidebar() {
       </aside>
 
       {/* ─── MOBILE TOP BAR ─── */}
-<div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/[0.07]">
-  <div className="flex items-center justify-between px-5 py-3.5">
-    <Link href="#home" className="flex items-center gap-2.5 min-w-0">
-      <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 border border-black/10">
-        <Image
-        src="/my_image.jpg"
-        alt="Mehadi Hasan"
-        width={36}
-        height={36}
-        className="object-cover object-top w-full h-full"
-      />
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-black/[0.07]">
+        <div className="flex items-center justify-between px-5 py-3.5">
+          <Link href="#home" className="flex items-center gap-2.5 min-w-0">
+            <div className="w-9 h-9 rounded-xl overflow-hidden flex-shrink-0 border border-black/10">
+              <Image
+                src="/my_image.jpg"
+                alt="Mehadi Hasan"
+                width={36}
+                height={36}
+                className="object-cover object-top w-full h-full"
+              />
+            </div>
+            <span className="text-[13px] font-semibold text-black truncate">
+              Mehadi Hasan
+            </span>
+          </Link>
+          <button
+            onClick={() => setOpen(!open)}
+            className="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-xl border border-black/10 text-black/60 hover:text-black transition-colors ml-3"
+          >
+            {open ? <X size={17} /> : <Menu size={17} />}
+          </button>
+        </div>
       </div>
-      <span className="text-[13px] font-semibold text-black truncate">Mehadi Hasan</span>
-    </Link>
-    <button
-      onClick={() => setOpen(!open)}
-      className="w-9 h-9 flex-shrink-0 flex items-center justify-center rounded-xl border border-black/10 text-black/60 hover:text-black transition-colors ml-3"
-    >
-      {open ? <X size={17} /> : <Menu size={17} />}
-    </button>
-  </div>
-</div>
 
       {/* ─── MOBILE FULLSCREEN MENU ─── */}
-{open && (
-  <div className="lg:hidden fixed inset-0 z-[60] bg-white flex flex-col">
+      {open && (
+        <div className="lg:hidden fixed inset-0 z-[60] bg-white flex flex-col">
           {/* Menu top bar */}
           <div className="flex items-center justify-between px-5 py-3.5 border-b border-black/[0.07]">
             <Link href="#home" className="flex items-center gap-2.5">
               <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
                 <span className="text-white text-xs font-bold">MH</span>
               </div>
-              <span className="text-[13px] font-semibold text-black">Mehadi Hasan</span>
+              <span className="text-[13px] font-semibold text-black">
+                Mehadi Hasan
+              </span>
             </Link>
             <button
               onClick={() => setOpen(false)}
@@ -190,7 +221,10 @@ export default function Sidebar() {
               <Link
                 key={label}
                 href={href}
-                onClick={() => { setActive(label); setOpen(false); }}
+                onClick={() => {
+                  setActive(label);
+                  setOpen(false);
+                }}
                 className={`flex items-center gap-4 px-5 py-4 rounded-2xl font-medium text-base transition-all duration-200 ${
                   active === label
                     ? "bg-black text-white"
@@ -205,7 +239,9 @@ export default function Sidebar() {
 
           {/* Socials */}
           <div className="px-5 py-8 border-t border-black/[0.07]">
-            <p className="text-[11px] text-black/30 uppercase tracking-widest font-mono-custom mb-4">Find me on</p>
+            <p className="text-[11px] text-black/30 uppercase tracking-widest font-mono-custom mb-4">
+              Find me on
+            </p>
             <div className="flex items-center gap-3">
               {socials.map(({ icon: Icon, href, label }) => (
                 <Link
