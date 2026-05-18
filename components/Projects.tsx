@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 
 function GithubIcon({ size = 16 }: { size?: number }) {
@@ -11,6 +12,20 @@ function GithubIcon({ size = 16 }: { size?: number }) {
   );
 }
 
+type Tab = "favs" | "saas" | "all";
+
+const ACCENT_COLORS = [
+  "#6366f1",
+  "#10b981",
+  "#f59e0b",
+  "#ef4444",
+  "#8b5cf6",
+  "#06b6d4",
+  "#ec4899",
+  "#84cc16",
+  "#f97316",
+];
+
 function getTagColor(tag: string) {
   const t = tag.toLowerCase();
   if (
@@ -18,45 +33,57 @@ function getTagColor(tag: string) {
       t.includes(k),
     )
   )
-    return "bg-yellow-50 border-yellow-200/80 text-yellow-700";
+    return "bg-yellow-50 border-yellow-200 text-yellow-800";
   if (
     ["react", "nextjs", "next.js", "html", "css", "tailwind", "framer"].some(
       (k) => t.includes(k),
     )
   )
-    return "bg-blue-50 border-blue-200/80 text-blue-600";
+    return "bg-blue-50 border-blue-200 text-blue-700";
   if (
     ["supabase", "postgresql", "mongodb", "mysql", "redis"].some((k) =>
       t.includes(k),
     )
   )
-    return "bg-green-50 border-green-200/80 text-green-700";
+    return "bg-green-50 border-green-200 text-green-700";
   if (
     ["vercel", "netlify", "render", "cloudflare", "docker"].some((k) =>
       t.includes(k),
     )
   )
-    return "bg-purple-50 border-purple-200/80 text-purple-600";
+    return "bg-purple-50 border-purple-200 text-purple-700";
   if (
     ["oauth", "jwt", "auth", "bcrypt", "security", "cyber"].some((k) =>
       t.includes(k),
     )
   )
-    return "bg-red-50 border-red-200/80 text-red-600";
+    return "bg-red-50 border-red-200 text-red-700";
   if (
     ["api", "rest", "graphql", "expressjs", "node"].some((k) => t.includes(k))
   )
-    return "bg-orange-50 border-orange-200/80 text-orange-600";
+    return "bg-orange-50 border-orange-200 text-orange-700";
   if (
     ["cloudinary", "resend", "stripe", "gemini", "openai"].some((k) =>
       t.includes(k),
     )
   )
-    return "bg-pink-50 border-pink-200/80 text-pink-600";
-  return "bg-slate-50 border-slate-200/80 text-slate-500";
+    return "bg-pink-50 border-pink-200 text-pink-700";
+  return "bg-slate-50 border-slate-200 text-slate-500";
 }
 
-const projects = [
+type Project = {
+  num: string;
+  title: string;
+  description: string;
+  tags: string[];
+  github: string;
+  live: string;
+  featured: boolean;
+  inProgress: boolean;
+  cats: Tab[];
+};
+
+const projects: Project[] = [
   {
     num: "01",
     title: "NIXBIRD",
@@ -79,6 +106,7 @@ const projects = [
     live: "https://nixbird.com",
     featured: true,
     inProgress: false,
+    cats: ["favs", "saas"],
   },
   {
     num: "02",
@@ -98,8 +126,8 @@ const projects = [
     live: "",
     featured: true,
     inProgress: false,
+    cats: ["favs"],
   },
-
   {
     num: "03",
     title: "Robot PathFinder",
@@ -110,6 +138,7 @@ const projects = [
     live: "",
     featured: true,
     inProgress: false,
+    cats: [],
   },
   {
     num: "04",
@@ -138,6 +167,7 @@ const projects = [
     live: "https://xonexa-client.vercel.app",
     featured: true,
     inProgress: false,
+    cats: ["favs", "saas"],
   },
   {
     num: "05",
@@ -161,8 +191,8 @@ const projects = [
     live: "",
     featured: true,
     inProgress: true,
+    cats: ["favs"],
   },
-
   {
     num: "06",
     title: "World Explore",
@@ -172,8 +202,8 @@ const projects = [
     live: "https://world-explore6838.netlify.app",
     featured: false,
     inProgress: false,
+    cats: [],
   },
-
   {
     num: "07",
     title: "GlobeReport",
@@ -184,6 +214,7 @@ const projects = [
     live: "",
     featured: false,
     inProgress: false,
+    cats: [],
   },
   {
     num: "08",
@@ -195,6 +226,7 @@ const projects = [
     live: "https://nibir-hasan.netlify.app",
     featured: false,
     inProgress: false,
+    cats: [],
   },
   {
     num: "09",
@@ -206,10 +238,24 @@ const projects = [
     live: "",
     featured: false,
     inProgress: false,
+    cats: [],
   },
 ];
 
+const TABS: { key: Tab; label: string }[] = [
+  { key: "favs", label: "⭐ Favourites" },
+  { key: "saas", label: "SaaS" },
+  { key: "all", label: "All Projects" },
+];
+
 export default function Projects() {
+  const [activeTab, setActiveTab] = useState<Tab>("favs");
+
+  const filtered =
+    activeTab === "all"
+      ? projects
+      : projects.filter((p) => p.cats.includes(activeTab));
+
   return (
     <section
       id="projects"
@@ -224,9 +270,9 @@ export default function Projects() {
           <div className="flex-1 h-px bg-black/[0.07]" />
         </div>
 
-        <div className="flex items-end justify-between mb-12">
+        <div className="flex items-end justify-between mb-10">
           <h2 className="font-display font-semibold text-[clamp(1.9rem,3.5vw,2.8rem)] text-black leading-[1.15]">
-            Things I`ve built
+            Things I&apos;ve built
           </h2>
           <Link
             href="https://github.com/MehadiWritesCode"
@@ -239,72 +285,101 @@ export default function Projects() {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
-          {projects.map((p) => (
-            <div
-              key={p.num}
-              className="group relative bg-white border border-black/[0.08] rounded-2xl p-8 hover:border-black/20 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 overflow-hidden"
+        {/* Tab Bar */}
+        <div className="flex gap-1 mb-10 bg-black/[0.04] w-fit p-1 rounded-xl border border-black/[0.06]">
+          {TABS.map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`px-5 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 ${
+                activeTab === tab.key
+                  ? "bg-white text-black shadow-sm border border-black/[0.08]"
+                  : "text-black/40 hover:text-black/70"
+              }`}
             >
-              {/* Top row */}
-              <div className="flex items-center justify-between mb-6">
-                <span className="font-mono-custom text-[11px] text-black/20 uppercase tracking-[0.2em]">
-                  {p.num}
-                </span>
-                <div className="flex items-center gap-2">
-                  {p.inProgress && (
-                    <span className="text-[11px] font-medium text-amber-500 border  bg-amber-50 px-2.5 py-0.5 rounded-full">
-                      In Progress
-                    </span>
-                  )}
-                  {p.featured && !p.inProgress && (
-                    <span className="text-[11px] font-medium text-white border border-black/10 px-2.5 py-0.5 rounded-full bg-black">
-                      Featured
-                    </span>
-                  )}
-                  <Link
-                    href={p.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-7 h-7 flex items-center justify-center rounded-lg border border-black/08 text-black/30 hover:text-black hover:border-black/20 transition-all"
-                  >
-                    <GithubIcon size={13} />
-                  </Link>
-                  {p.live && (
-                    <Link
-                      href={p.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-7 h-7 flex items-center justify-center rounded-lg border border-black/08 text-black/30 hover:text-black hover:border-black/20 transition-all"
-                    >
-                      <ArrowUpRight size={13} />
-                    </Link>
-                  )}
-                </div>
-              </div>
-
-              <h3 className="font-display font-semibold text-xl text-black mb-3">
-                {p.title}
-              </h3>
-              <p className="text-black/40 text-[13px] leading-relaxed mb-6">
-                {p.description}
-              </p>
-
-              <div className="flex flex-wrap gap-1.5">
-                {p.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className={` text-black text-[11px] uppercase tracking-wider px-3 py-1 border rounded-full ${getTagColor(tag)}`}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Hover left border accent */}
-              <div className="absolute left-0 top-6 bottom-6 w-[2px] bg-black scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-full" />
-            </div>
+              {tab.label}
+            </button>
           ))}
         </div>
+
+        {/* Grid */}
+        {filtered.length === 0 ? (
+          <p className="text-black/30 text-sm py-16 text-center">
+            No projects in this category yet.
+          </p>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-4">
+            {filtered.map((p, i) => (
+              <div
+                key={p.num}
+                className="group relative bg-black/[0.02] border border-black/[0.07] rounded-2xl p-8 hover:border-black/[0.16] hover:bg-white hover:shadow-[0_8px_30px_rgba(0,0,0,0.07)] transition-all duration-300 overflow-hidden"
+              >
+                {/* Colored left accent on hover */}
+                <div
+                  className="absolute left-0 top-6 bottom-6 w-[2.5px] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top rounded-full"
+                  style={{
+                    background: ACCENT_COLORS[i % ACCENT_COLORS.length],
+                  }}
+                />
+
+                {/* Top row */}
+                <div className="flex items-center justify-between mb-6">
+                  <span className="font-mono-custom text-[11px] text-black/20 uppercase tracking-[0.2em]">
+                    {p.num}
+                  </span>
+                  <div className="flex items-center gap-2">
+                    {p.inProgress && (
+                      <span className="text-[11px] font-medium text-amber-600 border border-amber-200 bg-amber-50 px-2.5 py-0.5 rounded-full">
+                        In Progress
+                      </span>
+                    )}
+                    {p.featured && !p.inProgress && (
+                      <span className="text-[11px] font-medium text-white border border-black/10 px-2.5 py-0.5 rounded-full bg-black">
+                        Featured
+                      </span>
+                    )}
+                    <Link
+                      href={p.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-7 h-7 flex items-center justify-center rounded-lg border border-black/[0.08] text-black/30 hover:text-black hover:border-black/20 transition-all"
+                    >
+                      <GithubIcon size={13} />
+                    </Link>
+                    {p.live && (
+                      <Link
+                        href={p.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-7 h-7 flex items-center justify-center rounded-lg border border-black/[0.08] text-black/30 hover:text-black hover:border-black/20 transition-all"
+                      >
+                        <ArrowUpRight size={13} />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+
+                <h3 className="font-display font-semibold text-xl text-black mb-3">
+                  {p.title}
+                </h3>
+                <p className="text-black/40 text-[13px] leading-relaxed mb-6">
+                  {p.description}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {p.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className={`text-[11px] uppercase tracking-wider px-3 py-1 border rounded-full ${getTagColor(tag)}`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
