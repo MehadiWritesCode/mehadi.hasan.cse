@@ -170,6 +170,18 @@ const projects: Project[] = [
   },
   {
     num: "05",
+    title: "Space-Viz",
+    description:
+      "Easy documentation and interactive 3D model for space objects like blackhole,nebula,solarsystem , cosmic web struture etc",
+    tags: ["Nextjs", "Threejs", "WebGL shader", "typescript"],
+    github: "https://github.com/MehadiWritesCode/space-viz",
+    live: "https://space-viz.netlify.app",
+    featured: true,
+    inProgress: false,
+    cats: ["favs"],
+  },
+  {
+    num: "06",
     title: "CGCP",
     description:
       "A smart digital platform connecting citizens with government services in Bangladesh, enabling issue reporting, transparency, AI-powered assistance, and real-time public service insights.",
@@ -193,7 +205,7 @@ const projects: Project[] = [
     cats: ["favs"],
   },
   {
-    num: "06",
+    num: "07",
     title: "World Explore",
     description: "Give primary details of every country in the world",
     tags: ["HTML", "css", "js", "API"],
@@ -205,7 +217,7 @@ const projects: Project[] = [
     stars: 3,
   },
   {
-    num: "07",
+    num: "08",
     title: "GlobeReport",
     description:
       "A BBC-inspired modern news platform built with PHP and Supabase database integration.",
@@ -218,7 +230,7 @@ const projects: Project[] = [
     stars: 4,
   },
   {
-    num: "08",
+    num: "09",
     title: "Portfolio — Nibir Hasan",
     description:
       "Personal portfolio website designed and developed for a friend.",
@@ -231,7 +243,7 @@ const projects: Project[] = [
     stars: 3,
   },
   {
-    num: "09",
+    num: "10",
     title: "Inventory Management System",
     description:
       "1st semester console-based inventory management system built with C.",
