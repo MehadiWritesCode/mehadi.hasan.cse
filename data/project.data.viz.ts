@@ -161,6 +161,30 @@ export const PROJECTS = [
       { label: "Coordinates", value: "Boyer-Lindquist" },
     ],
   },
+  {
+    id: "galaxy-collision",
+    status: "live" as const,
+    icon: "✺",
+    title: "Galaxy Collision",
+    subtitle: "Toomre Interaction · Tidal Dynamics · Galactic Merger",
+    badge: "GALACTIC DYNAMICS",
+    year: "2026",
+    color: "#4f46e5",
+    tags: ["Three.js", "WebGL", "Astrophysics", "N-body"],
+    tech: "Three.js + Restricted N-body + UnrealBloom",
+    description:
+      "Interactive simulation of a Milky Way–Andromeda style galaxy collision using a Toomre restricted three-body approximation. Demonstrates gravitational tidal interactions, tidal bridges and tails, dark matter halo overlap, starburst triggering from gas-cloud compression, and the gradual merger of two spiral galaxies into a single elliptical remnant over billions of years. Individual stellar collisions are effectively absent due to enormous interstellar distances.",
+    details: [
+      { label: "Model", value: "Toomre Restricted 3-body Approximation" },
+      { label: "Galaxies", value: "Milky Way analogue + Andromeda analogue" },
+      { label: "Particles", value: "~10,000 stellar test particles" },
+      { label: "Mass Ratio", value: "1 : 1 major merger" },
+      { label: "Relative Velocity", value: "~110 km/s encounter" },
+      { label: "Dark Matter", value: "Extended NFW halo interaction" },
+      { label: "Star Formation", value: "Tidal-triggered starburst regions" },
+      { label: "Final State", value: "Elliptical remnant — 'Milkomeda'" },
+    ],
+  },
 ] as const;
 
 // TypeScript type
