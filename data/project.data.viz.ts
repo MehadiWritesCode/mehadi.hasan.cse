@@ -185,6 +185,30 @@ export const PROJECTS = [
       { label: "Final State", value: "Elliptical remnant — 'Milkomeda'" },
     ],
   },
+  {
+    id: "wormhole",
+    status: "live" as const,
+    icon: "⊗",
+    title: "Wormhole",
+    subtitle: "Einstein-Rosen Bridge · Morris-Thorne Metric",
+    badge: "SPACETIME PHYSICS",
+    year: "2025",
+    color: "#7c3aed",
+    tags: ["Three.js", "GLSL", "WebGL", "General Relativity"],
+    tech: "Three.js + Custom GLSL + UnrealBloom + Web Audio API",
+    description:
+      "Interactive 3D visualization of a traversable Morris-Thorne wormhole — an Einstein-Rosen bridge stabilized by exotic matter with negative energy density (NEC violation). Features a custom embedding-diagram surface shader with iridescent exotic matter sheen, infalling photon spirals with gravitational blueshift, Hawking radiation particle emission, tidal force vector animation, and a curved spacetime grid. Includes 5 color themes, real-time traversal camera animation, and a procedural Web Audio ambient soundscape (40 Hz drone, sawtooth throat hum, white-noise particle shimmer).",
+    details: [
+      { label: "Metric", value: "Morris-Thorne ds²=−dt²+dl²+(r₀²+l²)dΩ²" },
+      { label: "Throat Radius", value: "r₀ = 2.4 AU (traversable)" },
+      { label: "Exotic Matter", value: "ρ < 0 — NEC violated (Casimir-type)" },
+      { label: "Traversal Time", value: "~seconds (local frame)" },
+      { label: "Tidal Stress", value: "~10⁶ N/m² (F ∝ r₀⁻²)" },
+      { label: "Curvature", value: "K ∝ 1/r₀² (throat region)" },
+      { label: "Photon Path", value: "Geodesic spiral — blueshift at throat" },
+      { label: "Exit Region", value: "Parallel sheet — CTC possible" },
+    ],
+  },
 ] as const;
 
 // TypeScript type
